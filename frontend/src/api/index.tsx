@@ -1,12 +1,10 @@
 
 
-export async function loginUser(credentials: any) {
-  return fetch('http://localhost:5001/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
- }
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
+const host = "http://127.0.0.1:3002/";
+
+export const api = axios.create({
+  baseURL: host,
+});

@@ -1,25 +1,35 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { loginUser } from '../../api';
-
+/* import PropTypes from 'prop-types';
+ */
 import './Login.css'
+import { useNavigate } from 'react-router-dom';
  
 
 export default function Login({setToken}: any ) {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const token = await loginUser({
+    /* const token = `${username+password}`  await loginUser({
       username,
       password
-    });
+    }); 
     setToken(token);
+    navigate('/home') */
   }
 
+  localStorage.removeItem('token');
+
+
   return(
-    <div className="login-wrapper">
+    <h1>Login</h1>
+   
+  )
+}
+
+ /* <div className="login-wrapper">
       <h1>Please Login</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -34,10 +44,7 @@ export default function Login({setToken}: any ) {
           <button type="submit">Submit</button>
         </div>
       </form>
-    </div>
-  )
-}
-
-Login.propTypes = {
+    </div> */
+/* Login.propTypes = {
   setToken: PropTypes.func.isRequired
-}
+} */

@@ -1,29 +1,29 @@
-import React from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import React, {  } from 'react';
+import {  Route, Routes,  } from 'react-router-dom';
 
-import './App.css';
-import Login from '../Login/Login';
-import Home from '../Home/Home';
-import Dashboard from '../Dashbord/Dashbord';
-import Preferences from '../Preferences/Preferences';
+import Login from '../../pages/Login/Login';
+import Home from '../../pages/Home/Home';
+import Dashboard from '../../pages/Dashbord/Dashbord';
 
-import useToken from './useToken'
+
+import useToken from '../../hooks/useToken'
 
 
 function App() {
   const { token, setToken } = useToken();
 
   if(!token) {
-    return <Login setToken={setToken} />
+   return <Login setToken={setToken}/>
   }
+
+  
   return (
-    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login setToken={setToken}/>}/>
+        <Route path="/home" element={<Home />} />
         <Route path="/dashbord" element={<Dashboard />} />
-        <Route path="/preferences" element={<Preferences />} />
+        <Route path="*" element={<p>Error 404!</p>} />
       </Routes>
-    </BrowserRouter>
   );
 }
 
