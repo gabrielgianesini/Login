@@ -1,0 +1,11 @@
+{
+  "name": "MyLogin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/gabrielgianesini/Login.git",
+  "license": "MIT",
+  "scripts": {
+    "build": "cd ./backend && yarn install && yarn tsc &&  cd ../frontend && yarn install && yarn build",
+    "deploy": "cd ./backend && yarn deploy && cd ../frontend && yarn deploy"
+  }
+}

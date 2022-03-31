@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { enviaTeste } from "./testes/teste";
 
 const app = express();
 
@@ -11,4 +12,5 @@ app.use("/login", (req, res) => {
   });
 });
 
-app.listen(5001, () => console.log("API is running on port 5001"));
+app.listen(3002, () => console.log("API is running on port 5001"));
+enviaTeste();
