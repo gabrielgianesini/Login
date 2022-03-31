@@ -1,12 +1,7 @@
 import React from 'react';
-import { Navigate, Route, RouteProps } from "react-router-dom";
-import Home from '../pages/Home/Home';
+import { Navigate, Outlet } from 'react-router-dom';
 
-
-export const PrivateRoute = ({ ...rest }: RouteProps )  => {
-  let auth = true //useAuth();
-  
-  return (
-    <Route path="/home" element={<Home />} />
-  );
+export const PrivateRoute = () => {
+    const auth = true; 
+    return auth ? <Outlet /> : <Navigate to="/login" />;
 }

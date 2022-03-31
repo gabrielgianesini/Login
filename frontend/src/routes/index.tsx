@@ -1,10 +1,9 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom"
 import Dashboard from "../pages/Dashbord/Dashbord"
 import Home from "../pages/Home/Home"
 import Login from "../pages/Login/Login"
-import Preferences from "../pages/Preferences/Preferences"
+import About from "../pages/About/About"
 import { PrivateRoute } from "../private/route"
-
 
 
 export const RoutesApp = () => {
@@ -12,12 +11,12 @@ export const RoutesApp = () => {
     <Router>
       <Routes>
         <Route path='/login' element={<Login />} />
-
-        <PrivateRoute path="/home" element={<Home />} />
-        <PrivateRoute path="/dashbord" element={<Dashboard />} />
-        <PrivateRoute path="/preferences" element={<Preferences />} />
-
-        <Route path="*" element={<p>Error 404!</p>} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/home/about" element={<About />} />
+          <Route path="/dashbord" element={<Dashboard />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/login"/>} />
       </Routes>
     </Router>
   )
